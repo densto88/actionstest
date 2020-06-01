@@ -1,0 +1,17 @@
+name: Hello
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        multiply: [a]
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: hello mms
+        run: |
+          echo hello mms
+          Measure-Command { $out = new-object byte[] 1000000000; (new-object Random).NextBytes($out); foreach($number in 1..10) {  [IO.File]::WriteAllBytes('c:\rand.bin', $out); } }
